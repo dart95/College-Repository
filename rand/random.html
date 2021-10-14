@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<link rel="stylesheet" href="main.css">
+<body>
+	<div class="main">
+		<button class="easy-level"> Easy</button>
+		<button class="medium-level">Medium</button>
+		<button class="hard-level">Hard</button>
+			<div class="out" >Пример
+			</div>
+				<div class="text2" >
+    				Количество примеров:
+    				<span class="attempts">0</span>
+    			</div>
+		<input class="inp" type="text" placeholder="Ответ">
+		<button class="answ"> Ответ</button>
+		<span class="answout"></span>
+	</div>
+<script>
+	let score = 0;
+	let sum;
+	let answout = document.getElementsByClassName('answout')[0];
+	let attempts = document.getElementsByClassName('attempts')[0];
+	let trfl = document.getElementsByClassName('answ')[0];
+	let inp = document.getElementsByClassName('inp')[0].value;
+	inp = parseInt(inp);
+	let btneasy = document.getElementsByClassName('easy')[0];
+	let btnmedium = document.getElementsByClassName('medium')[0];
+	let btnhard = document.getElementsByClassName('hard')[0];
+	let out = document.getElementsByClassName('out')[0];
+
+	window.onload = function(){
+		alert("Для прохождения теста нажимайте на уровень сложности примера.Количество примеров 5");
+		const attemptscount = 5;
+        let attempts = document.getElementsByClassName('attempts')[0];
+        attempts.innerText = attemptscount;
+       
+	}
+
+	function easy(){
+		let choose = 0;
+		choose = Math.floor(Math.random() * 3) + 1;
+		switch(choose){
+			case 1:
+		 		mis();
+		 		break;
+			case 2:
+		 		plus();
+		 		break;
+		 	case 3:
+		 		qu();
+		 		break;
+		 	case 4:
+		 		del();
+		 		break;
+		 };
+	};
+	
+	document.activeElement.addEventListener('click', function(){
+		if(document.activeElement.className.includes('level') === true){
+				if(document.activeElement.className.includes('easy') === true)
+					easy();
+				else if(document.activeElement.className.includes('medium') === true)
+					medium();
+				else
+					hard();
+				};
+		});
+		//действие акивного элемента  и написание условия клик для каждого элемента  и рассматривает это по подстроке level 
+
+	function mis() {
+		let numPool = [1,2,3,4,5,6,7,8,9,99,10,33,46,24,67];
+		let a = Math.floor(Math.random() * numPool.length),	
+		b = Math.floor(Math.random() * numPool.length),
+		c = Math.floor(Math.random() * numPool.length);
+		sum = a - b + c;
+		out.innerHTML = a + "-" + b + "+" + c;
+	};
+	
+	function plus(){
+		let numPool = [1,2,3,4,5,6,7,8,9,99,10,33,46,24,67];
+		let a = Math.floor(Math.random() * numPool.length),	
+		b = Math.floor(Math.random() * numPool.length),
+		c = Math.floor(Math.random() * numPool.length);
+		sum = a + b + c;
+		out.innerHTML = a + "+" + b + "+" + c;
+	};	
+	function qu(){
+		let numPool = [1,2,3,4,5,6,7,8,9,99,10,33,46,24,67];
+		let a = Math.floor(Math.random() * numPool.length),	
+		b = Math.floor(Math.random() * numPool.length),
+		c = Math.floor(Math.random() * numPool.length);
+		sum = a * b;
+		out.innerHTML = a + "*" + b;
+	};
+	// function del() {
+	// 	let numPool = [1,2,3,4,5,6,7,8,9,99,10,33,46,24,67];
+	// 	let a = Math.floor(Math.random() * numPool.length),	
+	// 	b = Math.floor(Math.random() * numPool.length),
+	// 	c = Math.floor(Math.random() * numPool.length);
+	// 	sum = a / b;
+	// 	out.innerHTML = a + "/" + b;
+	// };
+
+	function answ() {
+		inp = document.getElementsByClassName('inp')[0].value;
+		inp = parseInt(inp);
+		let summ = attempts,
+		pers;
+		
+		if (inp == sum) {
+			score += 1; 
+		}
+		else{
+			score -= 1;
+		}
+		attempts = document.getElementsByClassName('attempts')[0];
+        a = attempts.innerText;
+        a = a - 1;//пояснить 
+        attempts.innerText = a;
+        //pers = (score * 100) / attemptscount; 
+ 
+        if(a == 0){
+        	alert("Ваш счёт =" + " " + score + " " + "Вы молодцы")
+        	//answout.innerText = "Ваш счёт" + " " + score + " " +  "Из" + " " + attempts + " " + "Вы молодцы";	
+        	//answout.innerText  = "Процент выполнения" + " " + pers +"%" ;
+        }
+        //else if(score == 0){
+        	//answout.innerText = "Процент выполнения" + " " + "50" +"%" ;
+        //};
+    	if(a == -1 ){
+    		window.location.reload();
+    	};
+    };
+    	trfl.addEventListener("click",answ);
+</script>
+</body>
+</html>

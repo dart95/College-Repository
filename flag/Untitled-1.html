@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tab Сhanger</title>
+    <meta charset="utf-8" />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: grey;
+        min-width: 592px;
+        overflow: hidden;
+      }
+      .pages {
+        position: absolute;
+        top: 64px;
+        left: 16px;
+        min-width: 560px;
+        background-color: #fff;
+        padding: 16px;
+        overflow-y: auto;
+      }
+      .buttons {
+        width: 128px;
+        height: 32px;
+        min-width: 128px;
+        min-height: 32px;
+        float: left;
+        margin-right: 16px;
+        border-radius: 0;
+        border: none;
+        background-color: #fff;
+        color: #000;
+      }
+      #navigator {
+        margin-top: 16px;
+        margin-left: 16px;
+        min-width: 560px;
+        display: inline-block;
+      }
+      #navigator :last-child {
+        float: right;
+        margin: 0;
+      }
+      #navigator :last-child:hover {
+        background-color: pink;
+      }
+      #navigator :first-child {
+        background-color: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="navigator">
+      <button id="storage-button" class="buttons">Склад</button>
+      <button id="clients-button" class="buttons">Клиенты</button>
+      <button id="orders-button" class="buttons">Заказы</button>
+      <button id="connect-button" class="buttons">Подключить БД</button>
+    </div>
+    <div id="storage-page" class="pages" style="z-index: 1">
+      Данные о складе.
+    </div>
+    <div id="clients-page" class="pages" style="z-index: 0">
+      Данные о клиентах.
+    </div>
+    <div id="orders-page" class="pages" style="z-index: 0">
+      Данные о заказах.
+    </div>
+    <script type="text/javascript">
+      //Начальный вызов функции для изменения размеров листа (адаптивный дизайн)
+      adaptiveDesign();
+      //Ловим событие изменения размеров окна браузера и вызываем функцию адаптивного дизайна
+      window.addEventListener("resize", adaptiveDesign);
+      //Ловим событие нажатия на активный элемент и вызываем функцию переключения вкладки
+      document.activeElement.addEventListener("click", function () {
+        if (document.activeElement.id.includes("-button") === true) {
+          let pages = document.getElementsByClassName("pages"),
+            buttons = document.getElementsByClassName("buttons"),
+            activeWord = document.activeElement.id.split("-")[0];
+          if (activeWord !== "connect") {
+            Array.from(pages).forEach(function (item, i, array) {
+              Array.from(array)[i].style.zIndex = 0;
+            });
+            Array.from(buttons).forEach(function (item, i, array) {
+              if (i < 3) Array.from(array)[i].style.backgroundColor = "#fff";
+            });
+            document.getElementById(activeWord + "-page").style.zIndex = 1;
+            document.getElementById(
+              activeWord + "-button"
+            ).style.backgroundColor = "pink";
+          }
+        }
+      });
+      //Функция адаптивного дизайна
+      function adaptiveDesign() {
+        let pages = document.getElementsByClassName("pages");
+        for (i = 0; i < pages.length; i++) {
+          pages[i].style.width =
+            parseInt(document.body.clientWidth - 32) + "px";
+          pages[i].style.height = parseInt(window.innerHeight - 128) + "px";
+        }
+        document.getElementById("navigator").style.width =
+          parseInt(document.body.clientWidth - 32) + "px";
+      }
+    </script>
+  </body>
+</html>

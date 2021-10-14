@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tab Сhanger</title>
+    <meta charset="utf-8" />
+    <style>
+      :root {
+        --panel-bg-color: #fff;
+        --container-bg-color: #f1f2f6;
+        --text-color: gray;
+      }
+      :root[theme="summer"] {
+        --panel-bg-color: #00e10f;
+        --container-bg-color: #e11a88;
+        --text-color: #c2e147;
+      }
+
+      :root[theme="autumn"] {
+        --panel-bg-color: orange;
+        --container-bg-color: #35e196;
+        --text-color: #1a42e1;
+      }
+
+      :root[theme="winter"] {
+        --panel-bg-color: #fff;
+        --container-bg-color: grey;
+        --text-color: #000;
+      }
+
+      :root[theme="spring"] {
+        --panel-bg-color: #e165ca;
+        --container-bg-color: #a658e1;
+        --text-color: #4b50e1;
+      }
+
+      * {
+        margin: 0;
+      }
+
+      html {
+        height: 100%;
+      }
+
+      body {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        font-family: verdana;
+        color: var(--text-color);
+      }
+      nav {
+        padding: 1.2rem;
+        background: var(--panel-bg-color);
+      }
+      nav a {
+        padding: 1.2rem;
+      }
+
+      .container {
+        flex: 1;
+        padding: 1rem;
+        background: var(--container-bg-color);
+      }
+      footer {
+        padding: 1rem;
+        background: var(--panel-bg-color);
+      }
+      input[type="button"] {
+        color: var(--text-color);
+        background: var(--panel-bg-color);
+        padding: 0.25rem;
+        margin: 0.25rem;
+        font-size: 1rem;
+        float: right;
+      }
+    </style>
+  </head>
+  <body>
+    <nav></nav>
+
+    <div class="container">
+      <div>
+        <input type="button" value="Осень" id="otm-btn" />
+        <input type="button" value="Лето" id="summ-btn" />
+        <input type="button" value="Весна" id="sping-btn" />
+        <input type="button" value="Зима" id="wint-btn" />
+      </div>
+      <h2>Заголовок</h2>
+      <p>Контент</p>
+    </div>
+    <footer>
+      <p>Права</p>
+    </footer>
+    <script>
+      document.activeElement.addEventListener("click", function () {
+        if (document.activeElement.id.includes("btn")) {
+          let actelement = document.activeElement.id.split("-")[0];
+          switch (actelement) {
+            case "otm":
+              document.documentElement.removeAttribute("theme");
+              document.documentElement.setAttribute("theme", "autumn");
+              break;
+            case "wint":
+              document.documentElement.removeAttribute("theme");
+              document.documentElement.setAttribute("theme", "winter");
+              break;
+            case "summ":
+              document.documentElement.removeAttribute("theme");
+              document.documentElement.setAttribute("theme", "summer");
+              break;
+            case "sping":
+              document.documentElement.removeAttribute("theme");
+              document.documentElement.setAttribute("theme", "spring");
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

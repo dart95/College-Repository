@@ -1,0 +1,75 @@
+.btn {
+  word-spacing: 20px;
+  margin-top: 3%;
+  margin-left: 35%;
+  align-items: center;
+  flex-direction: row;
+}
+.oval {
+  width: 100px;
+  height: 80px;
+  background: #5fd80e;
+  border-radius: 50%;
+}
+.rec {
+  width: 100px;
+  height: 75px;
+  background-color: cyan;
+}
+.cir {
+  width: 100px;
+  height: 100px;
+  background-color: darkgoldenrod;
+  border-radius: 50%;
+}
+.sq {
+  width: 100px;
+  height: 100px;
+  background-color: darkgreen;
+}
+.numspan {
+  margin-left: 30px;
+  word-spacing: 60px;
+}
+.span {
+  margin-left: 30px;
+  word-spacing: 60px;
+}
+.spancolor:last-child {
+  color: #5fd80e;
+}
+.out {
+  margin: 80px 120px;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  background-color: darkorchid;
+  transition-property: height;
+  transition-duration: 5s;
+  transition-property: width;
+  transition-duration: 5s;
+  transition-property: border-radius;
+  transition-duration: 5s;
+}
+.oval:focus ~ .out {
+  height: 80px;
+  width: 100px;
+  border-radius: 50%;
+  background-color: #5fd80e;
+}
+.rec:focus ~ .out {
+  width: 100px;
+  height: 75px;
+  background-color: cyan;
+}
+.sq:focus ~ .out {
+  width: 100px;
+  height: 100px;
+  background-color: darkgreen;
+}
+.cir:focus ~ .out {
+  width: 100px;
+  height: 100px;
+  background-color: darkgoldenrod;
+  border-radius: 50%;
+}

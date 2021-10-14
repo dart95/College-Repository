@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet"  href="main.css">
+	<title> some color</title>
+</head>
+<body>
+
+
+<div class="main-btn">
+	<button class="R-btn" name=''>
+		R
+	</button>	
+
+	<button class="G-btn" z-index="1">
+		G
+	</button>	
+	
+	<button class="B-btn" z-index="0">
+		B
+	</button>
+</div>
+<div class="color-field" z-index="0">	
+	some text
+</div>
+
+<script >
+let R = document.getElementsByClassName("R-btn")[0];
+let G = document.getElementsByClassName("G-btn")[0];
+let B = document.getElementsByClassName("B-btn")[0];
+let colorfield = document.getElementsByClassName("color-field")[0];
+	
+	function changecolor() {
+	document.activeElement.addEventListener("click",function(){
+		if(document.activeElement.className.includes("-btn") === true){
+				document.body.style.backgroundColor = document.activeElement.style.backgroundColor;
+		};
+		
+
+	})
+	
+	};
+</script>
+</body>
+</html>	

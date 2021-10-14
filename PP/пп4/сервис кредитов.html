@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+	</title>
+</head>
+<body>
+<div class="info">
+	<input id="inp1" type="text" placeholder="Сумма">
+	<br>
+	<br>
+	<input id="inp2" type="text" placeholder="Колличество месяцев">
+	<br>
+	<br>
+	<input id="inp3" type="number" placeholder="Процентная ставка">
+	<br>
+	<br>
+	<input id="inp4" type="text" placeholder="Удобная дата">
+	<br>
+	<br>
+	<button id="btn">Расчитать</button>
+	<br>
+	<div class="out"></div>
+
+<script>
+	let sum = document.getElementById('inp1');
+	sum = parseInt(sum);
+	let month = document.getElementById('inp2');
+	month = parseInt(month);
+	
+	let out = document.getElementById('out');
+	let btn = document.getElementById('btn');
+	function func() {
+		let per = (document.getElementById('inp3')).value;
+		per = parseFloat(per);
+		let i = per / 100 / 12;
+		alert(i);
+	 };
+	btn.addEventListener('click', func) 
+</script>
+</div>
+</body>
+</html>

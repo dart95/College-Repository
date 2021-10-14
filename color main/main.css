@@ -1,0 +1,31 @@
+.main-btn{
+	display: flex;
+	position: fixed;
+	top:10%;
+	left:40%; 
+}
+.R-btn{
+	background-color:#E10800;
+	width: 100px;
+	height: 20px;
+	z-index: 1;
+}
+.G-btn{
+	background-color:#00E10F;
+	width: 100px;
+	height: 20px;
+	z-index: 2;
+}
+.B-btn{
+	background-color: #1E00E1;
+	width: 100px;
+	height: 20px;
+	z-index: 3;
+}
+.color-field{
+	position: absolute;
+	top:13%;
+	left:40%;
+	width: 300px;
+	height: 300px;
+}

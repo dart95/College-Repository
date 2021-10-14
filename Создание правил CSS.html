@@ -1,0 +1,70 @@
+<body>
+  <style>
+        :root {
+    --panel-bg-color:#fff;
+    --container-bg-color#f1f2f6;
+    --text-color: #2f3542;
+    }
+
+    :root [theme=”dark”] {
+    --panel-bg-color:#2f3542;
+    --container-bg-color#57606f;
+    --text-color: #ced60;
+    }
+    *{
+    margin:0
+    }
+    html{
+    height:100%;
+    }
+    body{
+    height:100%;
+    display:flex;
+    flex-direction: column;
+    fond-famiily: Verdana;
+    color:var(--text-color)
+    }
+    nav{
+    padding: 1.2rem;
+    background-color:var(--panel-bg-color);
+    }
+    nav a{
+    padding:1,2rem;
+    }
+    .container{
+    flex: 1;
+    padding:1rem;
+    background-color:var(--conntainer-bg-color);
+    }
+    footer{
+    padding:1rem;
+    background-color:var(--panel-bg-color);
+    }
+    Input[type=”button”]{
+    Color:var(--text-color);
+    Background-color:var(--panel-bg-color);
+    padding:0,25rem;
+    Margin:0,25rem;
+    Font-size:1rem;
+    }
+  </style>
+  <nav><a>Главная</a><a>Контакты</a><a>О нас</a></nav>
+  <div class="”container”">
+    <div>
+      <input type="button" value="Тема" id="toggle" />
+    </div>
+    <h2>Заголвок</h2>
+    <p>Контент</p>
+  </div>
+  <footer>
+    <p>Права 1С 2021</p>
+  </footer>
+  <script>
+    let toggleBtn = document.getElementById("toggle");
+    toggleBtn.addEventListener("click", function () {
+      if (document.documentElement.hasAttribute("theme"))
+        document.documentElement.removeAttribute("theme");
+      else document.documentElement.setAttribute("theme", "dark");
+    });
+  </script>
+</body>

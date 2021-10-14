@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title> </title>
+	</head>
+	<body>
+		<input id="inp" type="text" placeholder="Поиск">
+		<button id="btn">Найти</button>	
+		<div class="out"></div>
+		<script>
+			let btn = document.getElementById('btn'),
+			idd;
+			function choose(){
+				let mod = (document.getElementById('inp')).value;
+				mod = mod.toLowerCase();
+				switch (mod){
+					case "поиск":
+					fibo();
+					break;
+					case "проверка":
+					search();
+					break;
+					case "сумма":
+					sum();
+					break;
+				};
+			};	
+			btn.addEventListener("click", choose);	
+			function fibo(){
+		 		idd = prompt("ВВедите ID числа");
+				idd = parseInt(idd);
+				if (isNaN(idd) == true)
+					alert("Это не число, будь внимательнее!");
+				else
+					num();	
+			};
+			function num(){
+				let id = idd - 1,
+				n1 = 1,
+				n2 = 1,
+				container = [0,1,1],
+				res;
+				if (id >= 3){
+					for (let i = 3; i <= id; i++){
+						let n3 = n1 + n2;
+						n1 = n2;
+						n2 = n3
+						container.push(n2);
+		 			};
+					res = container[id];
+					alert(res);
+					if (idd == 1)
+						alert("0");
+					if (idd == 2)
+						alert("1");
+					if (idd == 3)
+						alert("3");
+				};			
+			};
+			function search(){
+				let step,
+				search = prompt("ВВедите число фибоначи");
+				search = parseInt(search);
+				if(isNaN(search) == true){
+					alert("Ты чё дурак чтоли пиши цифры");
+				}
+				else{
+					container = [0,1,1]					
+					while(search > container[container.length - 1]){
+						container.push(container[container.length - 1] + container[container.length - 2])
+					}
+					for(let i = 0; i < container.length; i++){
+						if(search == container[i])
+							alert('Число ' + search + ' - ' + (i+1) + '-й член ряда Фибоначчи!')
+					};
+				};
+			};
+			function sum() {
+				let n1 = 0,
+				n2 = 0,
+				sum = 0,
+				container = [0,1,1],
+				container2 = [0,1,1];	
+				let choose1 = prompt("Введите 1 ID числа для сложения");
+				let choose2 = prompt("Введите 2 ID числа для сложения");	
+				choose1 = parseInt(choose1);
+				choose2 = parseInt(choose2);
+					if (isNaN(choose1) && isNaN(choose2) == true){
+						alert("This is not a number")
+					} 
+					else{
+						while(choose1 > container[container.length - 1]){
+						container.push(container[container.length - 1] + container[container.length - 2])
+						n1 = choose1;
+						}
+						for (let i = 0; i < container.length; i++){
+							if (choose2 == container[i]){
+								n2 = choose2;
+							}
+						}
+						sum = n1 + n2;
+						console.log(" 1 Число" + " " + n1 + " // " + "2 Число" + " " + n2 + " // " + "Сумма элементов равна" + " " + sum);
+					};
+			};
+		</script>
+	</body>
+</html>

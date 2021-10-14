@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tab Сhanger</title>
+    <meta charset="utf-8" />
+    <style>
+      body {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      header {
+        border: 2px solid black;
+      }
+
+      #maintext {
+        margin-top: 10px;
+        height: 842.4pt;
+        width: 597.6pt;
+        border: 2px solid red;
+        margin-left: auto;
+        margin-right: auto;
+        position: static;
+        overflow-y: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="choose-text">
+        <div style="margin-left: 40px">Шрифты</div>
+        <div style="margin-left: 200px">Размер текста</div>
+      </div>
+
+      <select id="SelectS" class="selector">
+        <option value="Times New Roman">Times New Roman</option>
+        <option value="Arial">Arial</option>
+        <option value="Courier New">Courier New</option>
+      </select>
+      <select id="selectSZ" class="selector" style="margin-left: 55px">
+        <option value="14pt">14пт</option>
+        <option value="18pt">16пт</option>
+        <option value="26pt">24пт</option>
+        <option value="32pt">32пт</option>
+        <option value="48pt">48пт</option>
+      </select>
+      <select id="selectColor" class="selector">
+        <option value="black">блак</option>
+        <option value="red">ред</option>
+        <option value="blue">холубой</option>
+        <option value="cyan">берёза</option>
+        <option value="green">зелёный</option>
+      </select>
+    </header>
+
+    <div id="maintext" contenteditable="true"></div>
+    <script>
+      changetext();
+      function changetext() {
+        let font = document.getElementById("SelectS").value,
+          maintext = document.getElementById("maintext");
+        maintext.style.fontFamily = font;
+        let size = document.getElementById("selectSZ").value;
+        maintext.style.fontSize = size;
+        let color = document.getElementById("selectColor").value;
+        maintext.style.color = color;
+        Array.from(document.getElementsByTagName("span")).forEach(function (
+          item
+        ) {
+          item.style.fontSize = maintext.style.fontSize;
+        });
+      }
+      Array.from(document.getElementsByClassName("selector")).forEach(function (
+        item
+      ) {
+        item.addEventListener("input", changetext, false);
+      });
+    </script>
+  </body>
+</html>

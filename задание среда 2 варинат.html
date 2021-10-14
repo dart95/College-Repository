@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> some text</title>
+    <style >
+        #main{
+            
+          
+            display: flex;
+            width: 300px;
+            height: 25px;
+
+        }
+        #red{
+            width: 100px;
+            height: 20px;
+        }
+        #green{
+            background-color: green;
+            width: 100px;
+            height: 20px;
+        }
+        #blue{
+            background-color: blue;
+            width: 100px;
+            height: 20px;
+        }
+        #text-area{
+            top:12px;
+            position: absolute;
+            margin-top: 21px;
+            max-width: 900px;
+            min-width: 90%;
+            
+            height: 400px;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div id="main">
+    <button id="red" >R</button>
+    <button id="green">G</button>
+    <button id="blue">B</button>
+    <div id="text-area">
+    Node.appendChild() добавляет узел в конец списка дочерних элементов указанного родительского узла. Если данный дочерний элемент является ссылкой на существующий узел в документе, то функция appendChild() перемещает его из текущей позиции в новую позицию (нет необходимости удалять узел из родительского узла перед добавлением его к какому-либо другому узлу).
+
+Это означает, что узел не может находиться в двух точках документа одновременно. Поэтому, если у узла уже есть родитель, он сначала удаляется, а затем добавляется в новую позицию. Node.cloneNode() можно использовать для создания копии узла перед добавлением его в новый родительский элемент. Обратите внимание, что копии, сделанные с помощью cloneNode , не будут автоматически синхронизироваться.
+
+Если данный дочерний элемент является DocumentFragment, то все содержимое DocumentFragment перемещается в дочерний список указанного родительского узла.
+
+Доступен новый API!
+</div>
+</div>
+<script >
+
+        let r = document.getElementById('red');
+        let g = document.getElementById('green');
+        let b = document.getElementById('blue');
+        
+       r.style.backgroundColor = "#97121DFF";
+       g.style.backgroundColor ="#499700FF";
+       b.style.backgroundColor = "#1E0097FF";
+document.body.addEventListener("click", e => {
+             if (document.activeElement) {
+                 document.body.style.backgroundColor = document.activeElement.style.backgroundColor;
+             }
+         });
+</script>
+</body>
+</html>

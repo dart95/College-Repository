@@ -1,0 +1,62 @@
+root {
+  --panel-bg-color: #fff;
+  --container-bg-color: green;
+  --text-color: #2f3542;
+}
+
+:root[theme="winter"] {
+  --panel-bg-color: #fff;
+  --container-bg-color: grey;
+  --text-color: #000;
+}
+:root[theme="spring"] {
+  --panel-bg-color: #e165ca;
+  --container-bg-color: #a658e1;
+  --text-color: #4b50e1;
+}
+:root[theme="summer"] {
+  --panel-bg-color: #00e10f;
+  --container-bg-color: #e11a88;
+  --text-color: #c2e147;
+}
+:root[theme="outhem"] {
+  --panel-bg-color: orange;
+  --container-bg-color: #35e196;
+  --text-color: #1a42e1;
+}
+* {
+  margin: 0;
+}
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: Verdana;
+  color: var(--text-color);
+}
+nav {
+  padding: 1.2rem;
+  background-color: var(--panel-bg-color);
+}
+nav a {
+  padding: 1.2rem;
+}
+.container {
+  flex: 1;
+  padding: 1rem;
+  background-color: var(--conntainer-bg-color);
+}
+footer {
+  padding: 1rem;
+  background-color: var(--panel-bg-color);
+}
+Input[type="”button”"] {
+  color: var(--text-color);
+  background-color: var(--panel-bg-color);
+  padding: 0.25rem;
+  margin: 0.25rem;
+  font-size: 1rem;
+}

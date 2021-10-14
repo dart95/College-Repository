@@ -1,0 +1,117 @@
+<!DOCTYPE htmln>
+<html>
+<head>
+	<title></title>
+ <link rel="stylesheet" href="main.css">
+</head>
+<body>
+<div class="back">	
+	<div class="main">
+		<div>
+			<div>
+				<button class="reload">Reload</button>
+				<button class="start">Начать</button>
+			</div>
+			<div class="text1"> 
+				Нажми скорее
+			</div>
+		</div>
+	</div>
+	<div class="question hidden">
+		<div>Вы согласны?</div>
+		<div>
+			<button>Да</button>
+			<button>Нет</button>
+		</div>
+	</div>
+</div>
+</body>
+
+<script>
+	var score = 0;
+
+window.addEventListener("load", function prompt1() {
+	let btn = document.getElementsByClassName('start')[0];
+
+	btn.addEventListener("click", function (event) {
+		f1();
+	});
+
+	
+});
+
+
+
+document.querySelector("reload")
+	var btnn = document.getElementsByClassName("reload")[0];
+
+	btnn.addEventListener("click", function (event1) {
+		f2();
+	});
+
+
+function f1 (){
+	let questions = [
+		{
+			text: " Тег 'Link' необходим для подключения файла CSS ",
+			options: ["да", "нет", "как повезёт"],
+			right: true
+		},
+		{
+			text: " Тег 'li'  имеет дальнейшее разрешение тегов  ? ",
+			right: true
+		},
+		{
+			text: "Тег 'Body' можно прописать множество раз  ?",
+			right: false
+		},
+		{
+			text: " href необходим для подключения файлов из локального хранилища 	 ",
+			right: false
+		},
+		{
+			text: " Тег <p> необходимо закрывать ? ",
+			right: true
+		},
+		{
+			text: " есть ли ограничение в в написании тега <Div>  ? ",
+			right:false 
+		}
+
+
+	];
+	//лучше делать такой массив а "new Array" если нужен массив с заданным кол во элементов 
+
+	let score = 0;
+
+	const questionDiv = document.querySelector(".question");
+
+	questionDiv.classList.remove("hidden");
+
+
+
+	for (let i = 0; i < questions.length; i++) {
+		const question = questions[i];
+		const voice = confirm(question.text);
+
+		if (voice === question.right) {
+			//alert("Верно")
+			score = score + 1;			
+		} else {
+			score = score - 1;
+			//alert("Неверно")
+		}
+		
+	}
+	alert("Ваш счёт = " + score)
+}
+
+function f2 (){
+	window.location.reload();
+	
+}
+
+</script>
+
+</body>
+</html>

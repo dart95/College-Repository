@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <div>
+      <input type="text" class="inp" />
+      <textarea class="area"></textarea>
+      <button class="btn">Начать замену</button>
+      <button class="btn">Добавить слова</button>
+      <div class="out" width="100;" height="200;"></div>
+    </div>
+    <script>
+      let newword;
+      let arrword = [];
+      let cens;
+      let inp = document.getElementsByClassName("inp")[0];
+      let area = document.getElementsByClassName("area")[0];
+      let btn = document.getElementsByClassName("btn")[0];
+      let btn2 = document.getElementsByClassName("btn")[1];
+      let out = document.getElementsByClassName("out")[0];
+
+      inp.addEventListener("keydown", function (e) {
+        if (e.keyCode === 13) {
+          newwordarr();
+        }
+      });
+      function newwordarr() {
+        newword = inp.value;
+
+        arrword.push(newword);
+        console.log(arrword);
+      }
+      function censor() {
+        cens = area.value;
+        let outp = [];
+        outp.push(cens);
+        alert(outp);
+      }
+      btn.addEventListener("click", censor);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <title> Game  </title>
+
+        <link rel="stylesheet" href="game.css">
+
+        <meta charset="utf-8">
+    </head>
+    <body>
+        
+            
+       
+        <div class="hello">
+            <h2>  Добро пожаловать на Игру:  Угадай число  </h2>
+        </div>
+            
+ 
+            <div class="main">
+                <div class="text" >
+                    ВВедите число от 1 до 100:
+                    <br><input type = "text" class="input" placeholder="Введите число">
+                </div>
+                        <button class="start-game" >Угадать</button >
+                        <br>
+                            <div class="text2" >
+                                  Количество попыток:
+                               <span class="attempts">0</span>
+                            </div>
+            </div>
+             
+    </body>
+
+<script>
+    var prNum,tempOut;
+    const numcount = 100;
+
+    prNum = Math.floor((Math.random() * numcount) + 1);
+
+    window.onload = function() {
+        const attemptscount = 5;
+        let attempts = document.getElementsByClassName('attempts')[0];
+        attempts.innerText = attemptscount;
+
+        let btn = document.getElementsByClassName('start-game')[0];
+        btn.addEventListener('click', function(event) {
+            f1();
+        });
+    }
+
+    function f1() {
+        var num = 0, input;
+
+        num = document.getElementsByClassName('input')[0].value;
+
+
+        console.log('%d == %d', num, prNum);
+        if (parseInt(num) == parseInt(prNum)) {
+            alert('Вы угадали');
+            return;
+        } else if (parseInt(num) > parseInt(prNum)) {
+            alert('меньше');
+        } else {
+            alert('больше');
+        }
+
+        attempts = document.getElementsByClassName('attempts')[0];
+        a = attempts.innerText;
+        a = a - 1;
+        attempts.innerText = a;
+
+        if (a == 0) {
+            alert('Ты лох, число было = ' + prNum);
+        }
+    }
+</script>
+
+<script>
+let isMove = false;
+let x = 0;
+let y = 0; 
+    
+    const win = document.getElementsByClassName('main') [0];
+
+        win.addEventListener( 'mousedown', e=>{ 
+            x = e.offsetX;
+            y = e.offsetY;
+            isMove = true;
+            
+        });
+        document.addEventListener('mousemove', e=>{
+            if (isMove) {
+                win.style.left = (e.pageX - win.offsetWidth / 2) + "px";
+                win.style.top = (e.pageY - win.offsetHeight / 2) + "px";
+                console.log(x,y,e.offsetX,e.offsetY,win.style.top,win.style.left);
+                x = e.offsetX;
+                y = e.offsetY;
+
+                
+            };
+                
+        }); 
+        document.addEventListener('mouseup', e=>{
+            if (isMove) {
+                x = 0;  
+                y = 0;
+                isMove = false;
+            }
+        } )
+</script>
+
+<script></script>
+</html>

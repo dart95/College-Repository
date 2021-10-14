@@ -1,0 +1,66 @@
+.main{
+	background: #00BFFF;
+	position: absolute;
+	top: 22%;
+	left: 40%;
+	border: 10px ridge #FF8000;
+	margin: 50px 25px;
+	padding: 20px;
+}
+	
+.start-game{
+	color:grey;
+	position: relative;
+	top: 5px;
+	left: 48px;
+	margin: 10px;
+	padding: 5px;
+	background: white;
+	transition: .3s;
+	cursor: wait;
+	box-shadow: 0px 0px 10px 3px #0000FF;
+}
+
+.start-game:hover{
+color: #ADFF2F;	
+background: blue;
+box-shadow: 0px 0px 10px 3px #008000;	 
+}
+
+.text2{
+	color: #FDEAA8;
+	position: relative;
+	top: 7px;
+	left: 2px;
+	text-shadow: 9px 4px 3px #FF00FF, 0 0 3em #FFFF00;
+}	
+
+.text{
+	color: #FDEAA8;
+	text-shadow: -9px -4px 5px #FF00ff
+
+
+}
+.hello{
+	height: 50px;
+	width: 455px;
+	margin-top: 15px;
+	margin-left: 540px;
+	border: 5px inset #CC99FE;
+	padding-left: 5px;
+	margin-bottom: 100px;
+	background-color: yellow;
+	box-shadow: 0px 0px 6px 4px #00bfff;
+
+}
+
+.input{
+	background-color:white;
+}
+.input:hover{
+	background-color: ;
+	border: 3px solid yellow;
+	cursor: text;
+	box-shadow: 0px	;
+
+}

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>main</title>
+  </head>
+  <body>
+    <div>
+      Рост <input type="number" class="numb" placeholder="Рост" />
+      <br />
+      <br />
+      Размах рук <input type="number" class="numb" />
+      <br />
+      <br />
+      Ср очков за матч<input class="numb" />
+      <br />
+      <br />
+      Ср кол-во подборов<input class="numb" />
+      <br />
+      <br />
+      Ср кол-во передач<input class="numb" />
+      <button class="btn">расчёт</button>
+
+      <script>
+        let btn = document.getElementsByClassName("btn")[0];
+
+        btn.addEventListener("click", function () {
+          let hight = parseInt(
+            document.getElementsByClassName("numb")[0].value
+          );
+          let handsize = parseInt(
+            document.getElementsByClassName("numb")[1].value
+          );
+          let numcoutongame = parseInt(
+            document.getElementsByClassName("numb")[2].value
+          );
+          let numcoutonselection = parseInt(
+            document.getElementsByClassName("numb")[3].value
+          );
+          let numcoutonpass = parseInt(
+            document.getElementsByClassName("numb")[4].value
+          );
+          let searchunicorn = 0;
+          let ucout = 0;
+          let firstclass = 0;
+          let hightpos = 0;
+          let secondclass = 0;
+          let fdivis = 0;
+
+          if (hight >= 150 && hight <= 220) {
+            firstclass = firstclass + 1;
+          }
+          if (hight >= 205 && hight <= 220) {
+            hightpos = hightpos + 1;
+          }
+          if (hight > 220) searchunicorn = searchunicorn + 1;
+
+          if (hight < 150) {
+            secondclass = secondclass + 1;
+          }
+          if (handsize >= 200 && handsize <= 250) {
+            firstclass = firstclass + 1;
+          }
+          if (handsize >= 225 && handsize <= 250) {
+            hightpos = hightpos + 1;
+          }
+
+          if (handsize > 250) searchunicorn = searchunicorn + 1;
+
+          if (handsize < 200) {
+            secondclass += secondclass + 1;
+          }
+          if (numcoutongame >= 10 && numcoutongame <= 20) {
+            firstclass = firstclass + 1;
+          }
+          if (numcoutongame >= 15 && numcoutongame <= 20) {
+            hightpos = hightpos + 1;
+          }
+          if (numcoutongame > 20) {
+            ucout = ucout + 1;
+          }
+          if (numcoutongame < 10) {
+            secondclass = secondclass + 1;
+          }
+          if (numcoutonselection >= 2 && numcoutonselection <= 6) {
+            firstclass = firstclass + 1;
+          }
+          if (numcoutonselection >= 3 && numcoutonselection <= 6) {
+            hightpos = hightpos + 1;
+          }
+          if (numcoutonselection > 6) {
+            ucout = ucout + 1;
+          }
+          if (numcoutonselection < 2) {
+            secondclass = secondclass + 1;
+          }
+          if (numcoutonpass >= 3 && numcoutonpass <= 7) {
+            firstclass = firstclass + 1;
+          }
+          if (numcoutonpass >= 4 && numcoutonpass <= 7) {
+            hightpos = hightpos + 1;
+          }
+          if (numcoutonpass > 7) {
+            ucout = ucout + 1;
+          }
+          if (numcoutonpass < 3) {
+            secondclass = secondclass + 1;
+          }
+          fdivis = firstclass + hightpos;
+          if (
+            searchunicorn + ucout + fdivis >= 3 ||
+            (fdivis >= 5 && fdivis <= 10)
+          )
+            if (searchunicorn + ucout >= 3) alert("You unicorn");
+
+          if (searchunicorn + ucout + hightpos >= 3)
+            alert("you second division");
+
+          if (secondclass >= 1) alert("fag");
+        });
+      </script>
+    </div>
+  </body>
+</html>

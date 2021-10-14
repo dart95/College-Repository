@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>main</title>
+  </head>
+  <body>
+    <div>
+      1 число <input type="number" class="numb" />
+      <br />
+      2 число <input type="number" class="numb" />
+      <button class="btn">расчёт</button>
+
+      <script>
+        let btn = document.getElementsByClassName("btn")[0];
+
+        btn.addEventListener("click", function () {
+          let numb1 = parseInt(
+            document.getElementsByClassName("numb")[0].value
+          );
+          let numb2 = parseInt(
+            document.getElementsByClassName("numb")[1].value
+          );
+          let sum = (numb1 + 1) * (numb2 + 1);
+          let sum2 = sum - (numb1 + numb2) - numb2 * numb1;
+          alert(sum2);
+        });
+      </script>
+    </div>
+  </body>
+</html>

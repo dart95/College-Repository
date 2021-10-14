@@ -1,0 +1,36 @@
+body {
+  background-color: grey;
+}
+.container {
+  background-color: blue;
+}
+.left-toolbar-name {
+  align-items: center;
+  width: 250px;
+  height: 125px;
+  max-height: 125px;
+  max-width: 250px;
+  border: 3px solid seagreen;
+}
+.db-name {
+  display: flex;
+  align-items: center;
+  margin-left: 100px;
+}
+
+.left {
+  width: 125px;
+  height: 20px;
+}
+.btn-toolbar {
+  margin-top: 20px;
+  min-width: 125px;
+  min-height: 20px;
+
+  margin-left: 80px;
+}
+.DB-info {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+}

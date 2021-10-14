@@ -1,0 +1,14 @@
+.main{
+	color: red;
+	margin-top: 150px;
+	margin-left: 45%	;
+	height: 50px;
+	width: 100px;
+	border: 3px solid black;
+}
+
+.word{
+	margin-left: 25px;
+	margin-top: 10px;
+	padding: 5px;
+}

@@ -1,0 +1,11 @@
+header {
+  border: 2px solid black;
+}
+.main {
+  margin-top: 10px;
+  height: 842.4pt;
+  width: 597.6pt;
+  border: 2px solid red;
+  margin-left: auto;
+  margin-right: auto;
+}
