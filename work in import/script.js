@@ -1,24 +1,29 @@
-export const perimeter = (a) => {
-  return 4 * a;
-};
-export const square = (a) => {
-  return a ** 2;
-};
-
+import * as fun from "/work in import/fun.js";
 document.getElementById("start-btn").addEventListener(
   "click",
   function () {
-    let a = parseFloat(document.getElementById("n-value").value),
-      func = document.getElementById("functions2Q").value,
+    let a = parseFloat(document.getElementById("a-value").value),
+      func = document.getElementById("functions5Q").value,
       result = 0;
     switch (func) {
       case "perimeter":
-        result += perimeter(a);
+        result += fun.perimeter(a);
         break;
       case "square":
-        result += square(a);
+        result += fun.square(a);
         break;
-
+      case "diameter":
+        result += fun.diameter(a);
+        break;
+      case "square_circle":
+        result += fun.square_circle(a);
+        break;
+      case "inscribed_circle":
+        result += fun.inscribed_circle(a);
+        break;
+      case "circumscribed_circle":
+        result += fun.circumscribed_circle(a);
+        break;
       default:
         return false;
     }
