@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Media API HTML5</title>
+
+    <meta charset="utf-8" />
+
+    <style>
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <video width="640" height="480">
+      <source src="./video/video.mp4" type="video/mp4" />
+    </video>
+
+    <div id="controls" class="hidden">
+      <input type="button" id="ppButton" value="Play" />
+
+      <span id="timer">00:00</span>
+
+      <input
+        type="range"
+        step="0.001"
+        min="0"
+        max="1"
+        value="0.5"
+        id="volume"
+      />
+    </div>
+
+    <script type="text/javascript">
+      let video = document.getElementsByTagName("video")[0],
+        button = document.getElementById("ppButton"),
+        controls = document.getElementById("controls"),
+        volume = document.getElementById("volume"),
+        timer = document.getElementById("timer");
+
+      video.addEventListener(
+        "canplaythrough",
+        function () {
+          controls.classList.remove("hidden");
+
+          video.volume = volume.value;
+        },
+        false
+      );
+
+      button.addEventListener(
+        "click",
+        function () {
+          if (video.paused) {
+            video.play();
+          } else {
+            video.pause();
+          }
+        },
+        false
+      );
+
+      video.addEventListener(
+        "play",
+        function () {
+          button.value = "Pause";
+        },
+        false
+      );
+
+      video.addEventListener(
+        "pause",
+        function () {
+          button.value = "Play";
+        },
+        false
+      );
+
+      volume.addEventListener(
+        "input",
+        function () {
+          video.volume = volume.value;
+        },
+        false
+      );
+
+      video.addEventListener(
+        "ended",
+        function () {
+          video.currentTime = 0;
+        },
+        false
+      );
+
+      video.addEventListener(
+        "timeupdate",
+        function () {
+          timer.innerHTML = secondsToTime(video.currentTime);
+        },
+        false
+      );
+
+      function secondsToTime(time) {
+        let fulltime = "",
+          h = Math.floor(time / 3600),
+          dm = time % 3600,
+          m = Math.floor(dm / 60),
+          ds = dm % 60,
+          s = Math.ceil(ds);
+
+        if (s === 60) {
+          s = 0;
+
+          m += 1;
+        }
+
+        if (s < 10) {
+          s = "0" + s;
+        }
+
+        if (m === 60) {
+          m = 0;
+
+          h += 1;
+        }
+
+        if (m < 10) {
+          m = "0" + m;
+        }
+
+        if (h === 0) {
+          fulltime = m + ":" + s;
+        } else {
+          fulltime = h + ":" + m + ":" + s;
+        }
+
+        return fulltime;
+      }
+    </script>
+  </body>
+</html>
