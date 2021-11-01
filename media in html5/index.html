@@ -5,21 +5,23 @@
     <title>Media API HTML5</title>
 
     <meta charset="utf-8" />
-
-    <style>
-      .hidden {
-        display: none;
-      }
-    </style>
+    <link rel="stylesheet" href="./css/main.css" />
   </head>
 
   <body>
-    <video width="640" height="480">
+    <video width="1200" height="720" onTimeUpdate="progressUpdate()">
       <source src="./video/video.mp4" type="video/mp4" />
     </video>
 
     <div id="controls" class="hidden">
+      <div class="barContainer">
+        <div id="durationBar">
+          <div id="positionBar"><span id="displayStatus">0</span></div>
+        </div>
+      </div>
+      <input type="range" min="0" />
       <input type="button" id="ppButton" value="Play" />
+      <input type="button" id="voButton" value="Voice off" />
 
       <span id="timer">00:00</span>
 
@@ -33,111 +35,6 @@
       />
     </div>
 
-    <script type="text/javascript">
-      let video = document.getElementsByTagName("video")[0],
-        button = document.getElementById("ppButton"),
-        controls = document.getElementById("controls"),
-        volume = document.getElementById("volume"),
-        timer = document.getElementById("timer");
-
-      video.addEventListener(
-        "canplaythrough",
-        function () {
-          controls.classList.remove("hidden");
-
-          video.volume = volume.value;
-        },
-        false
-      );
-
-      button.addEventListener(
-        "click",
-        function () {
-          if (video.paused) {
-            video.play();
-          } else {
-            video.pause();
-          }
-        },
-        false
-      );
-
-      video.addEventListener(
-        "play",
-        function () {
-          button.value = "Pause";
-        },
-        false
-      );
-
-      video.addEventListener(
-        "pause",
-        function () {
-          button.value = "Play";
-        },
-        false
-      );
-
-      volume.addEventListener(
-        "input",
-        function () {
-          video.volume = volume.value;
-        },
-        false
-      );
-
-      video.addEventListener(
-        "ended",
-        function () {
-          video.currentTime = 0;
-        },
-        false
-      );
-
-      video.addEventListener(
-        "timeupdate",
-        function () {
-          timer.innerHTML = secondsToTime(video.currentTime);
-        },
-        false
-      );
-
-      function secondsToTime(time) {
-        let fulltime = "",
-          h = Math.floor(time / 3600),
-          dm = time % 3600,
-          m = Math.floor(dm / 60),
-          ds = dm % 60,
-          s = Math.ceil(ds);
-
-        if (s === 60) {
-          s = 0;
-
-          m += 1;
-        }
-
-        if (s < 10) {
-          s = "0" + s;
-        }
-
-        if (m === 60) {
-          m = 0;
-
-          h += 1;
-        }
-
-        if (m < 10) {
-          m = "0" + m;
-        }
-
-        if (h === 0) {
-          fulltime = m + ":" + s;
-        } else {
-          fulltime = h + ":" + m + ":" + s;
-        }
-
-        return fulltime;
-      }
-    </script>
+    <script src="./js/script.js"></script>
   </body>
 </html>

@@ -1,0 +1,27 @@
+.hidden {
+  display: none;
+}
+#positionBar {
+  height: 20px;
+  color: white;
+  font-weight: bold;
+  background: steelblue;
+  text-align: center;
+}
+
+#positionBar span {
+  display: inline-block;
+  margin-top: 5px;
+}
+
+#durationBar {
+  border: solid 1px black;
+  width: 1200px;
+  margin-bottom: 5px;
+}
+body {
+  margin-left: 16%;
+}
+#displayStatus {
+  color: rgb(4, 0, 228);
+}
