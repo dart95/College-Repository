@@ -61,7 +61,7 @@ voButton.addEventListener("click", (e) => {
 });
 
 fullscreen.addEventListener("click", (e) => {
-  if ((video.height = 360)) {
+  if (video.height == 360) {
     video.width = document.documentElement.clientWidth - 10;
     video.height = document.documentElement.clientHeight - 75;
     fullscreen.value = "Fullscreen on ";
