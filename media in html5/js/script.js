@@ -3,8 +3,31 @@ let video = document.getElementsByTagName("video")[0],
   controls = document.getElementById("controls"),
   volume = document.getElementById("volume"),
   timer = document.getElementById("timer"),
-  voButton = document.getElementById("voButton");
+  voButton = document.getElementById("voButton"),
+  timeduration = document.getElementById("timeduration"),
+  btn10fut = document.getElementById("btn10fut"),
+  btn10bac = document.getElementById("btn10bac"),
+  fullscreen = document.getElementById("fullscreen"),
+  positionBar = document.getElementById("positionBar");
 
+btn10bac.addEventListener("click", (e) => {
+  video.currentTime -= 10;
+});
+btn10fut.addEventListener(
+  "click",
+  (e) => {
+    video.currentTime += 10;
+  },
+  false
+);
+
+timeduration.addEventListener(
+  "input",
+  (e) => {
+    timeduration = video.currentTime;
+  },
+  false
+);
 video.addEventListener(
   "canplaythrough",
   function () {
@@ -30,8 +53,23 @@ button.addEventListener(
 voButton.addEventListener("click", (e) => {
   if (video.volume > 0) {
     video.volume = 0;
+    voButton.value = "Voice off";
   } else {
-    video.volume = 1;
+    video.volume = 0.5;
+    voButton.value = "Voice on";
+  }
+});
+
+fullscreen.addEventListener("click", (e) => {
+  if ((video.height = 360)) {
+    video.width = document.documentElement.clientWidth - 10;
+    video.height = document.documentElement.clientHeight - 75;
+    fullscreen.value = "Fullscreen on ";
+    document.body.style.overflow = "hidden";
+  } else {
+    video.width = 480;
+    video.height = 360;
+    fullscreen.value = "Fullscreen off ";
   }
 });
 
@@ -105,15 +143,11 @@ function secondsToTime(time) {
 
   if (h === 0) {
     fulltime = m + ":" + s;
-    let positionBar = document.getElementById("positionBar");
-    positionBar.style.width = (video.currentTime / video.duration) * 100 + "%";
 
-    displayStatus = document.getElementById("displayStatus");
-    displayStatus.innerHTML = Math.round(video.currentTime * 100) / 100;
+    positionBar.style.width = (video.currentTime / video.duration) * 100 + "%";
   } else {
     fulltime = h + ":" + m + ":" + s;
 
-    var positionBar = document.getElementById("positionBar");
     positionBar.style.width = (video.currentTime / video.duration) * 100 + "%";
   }
 

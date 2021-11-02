@@ -9,19 +9,30 @@
   </head>
 
   <body>
-    <video width="1200" height="720" onTimeUpdate="progressUpdate()">
-      <source src="./video/video.mp4" type="video/mp4" />
-    </video>
-
     <div id="controls" class="hidden">
-      <div class="barContainer">
-        <div id="durationBar">
-          <div id="positionBar"><span id="displayStatus">0</span></div>
+      <video width="480px" height="360px" poster="./img/poster.jpg">
+        <source src="./video/video.mp4" type="video/mp4" />
+      </video>
+      
+        <div class="barContainer">
+          <div id="durationBar">
+            <div id="positionBar"></div>
+          </div>
         </div>
       </div>
-      <input type="range" min="0" />
+      <input
+        type="range"
+        size="1000"
+        step="0.001"
+        min="0"
+        max="1"
+        id="timeduration"
+      />
       <input type="button" id="ppButton" value="Play" />
-      <input type="button" id="voButton" value="Voice off" />
+      <input type="button" id="voButton" value="Voice on" />
+      <input type="button" id="btn10fut" value="+10 sec" />
+      <input type="button" id="btn10bac" value="-10 sec" />
+      <input type="button" id="fullscreen" value="Fullscreen" />
 
       <span id="timer">00:00</span>
 
