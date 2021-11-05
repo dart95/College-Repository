@@ -61,7 +61,15 @@ voButton.addEventListener("click", (e) => {
 });
 
 fullscreen.addEventListener("click", (e) => {
-  if (video.height == 360) {
+  if (video.requestFullscreen) {
+    video.requestFullscreen();
+  } else if (video.webkitRequestFullscreen) {
+    /* Safari */ video.webkitRequestFullscreen();
+  } else if (video.msRequestFullscreen) {
+    /* IE11 */
+    elem.msRequestFullscreen();
+  }
+  /*if (video.height == 360) {
     video.width = document.documentElement.clientWidth - 10;
     video.height = document.documentElement.clientHeight - 75;
     fullscreen.value = "Fullscreen on ";
@@ -70,7 +78,7 @@ fullscreen.addEventListener("click", (e) => {
     video.width = 480;
     video.height = 360;
     fullscreen.value = "Fullscreen off ";
-  }
+  }*/
 });
 
 video.addEventListener(
