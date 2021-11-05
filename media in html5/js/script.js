@@ -64,9 +64,8 @@ fullscreen.addEventListener("click", (e) => {
   if (video.requestFullscreen) {
     video.requestFullscreen();
   } else if (video.webkitRequestFullscreen) {
-    /* Safari */ video.webkitRequestFullscreen();
+    video.webkitRequestFullscreen();
   } else if (video.msRequestFullscreen) {
-    /* IE11 */
     elem.msRequestFullscreen();
   }
   /*if (video.height == 360) {
