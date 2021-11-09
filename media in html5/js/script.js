@@ -21,13 +21,6 @@ btn10fut.addEventListener(
   false
 );
 
-timeduration.addEventListener(
-  "input",
-  (e) => {
-    timeduration = video.currentTime;
-  },
-  false
-);
 video.addEventListener(
   "canplaythrough",
   function () {
