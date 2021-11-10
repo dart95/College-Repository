@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      canvas {
+        background-color: aqua;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas" width="2000" height="2000"></canvas>
+
+    <script>
+      let canvas = document.getElementById("canvas");
+      let context = canvas.getContext("2d");
+      let image = new Image();
+      image.src = "./img/poster1.jpg";
+      let x = 0,
+        y = 0,
+        sw = 166.6,
+        sh = 500,
+        dw = 0,
+        dh = 0;
+
+      image.onload = function () {
+        for (let j = 0; j < 2; j++) {
+          context.drawImage(image, x, y, sw, sh, dw, dh, 166.6, 500);
+          for (let i = 0; i < 3; i++) {
+            dw = 186.6;
+            x = 166.9;
+            context.drawImage(image, x, y, sw, sh, dw, dh, 166.6, 500);
+          }
+
+          //context.drawImage(image, 0, 500, 166.6, 166.6, 0, 530, 166.6, 500);
+          //context.drawImage(image, 166, 500, 333.3, 166.6, 196.6, 0, 166.6, 500);
+          //context.drawImage(image, 0, 166.6, 500, 166.6, 0, 196.6, 500, 166.6);
+        }
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+{
+    "version": 3,
+    "mappings": "ACAA,AAAA,OAAO,AAAC,CACN,gBAAgB,CAAE,IAAI,CACtB,UAAU,CAAE,UAAU,CACtB,KAAK,CAAE,KAAK,CACZ,MAAM,CAAE,KAAK,CACb,WAAW,CAAE,GAAG,CAChB,UAAU,CAAE,EAAE,CACf,AACD,AAAA,YAAY,AAAC,CACX,KAAK,CAAE,KAAK,CACZ,MAAM,CAAE,KAAK,CACb,aAAa,CAAE,GAAG,CACnB,ACZD,AAAA,QAAQ,AAAC,CACP,OAAO,CAAE,IAAI,CACb,YAAY,CAAE,GAAG,CAIlB,AAND,AAGE,QAHM,CAGN,SAAS,AAAC,CACR,WAAW,CAAE,IAAI,CAClB,AFHH,AAAA,CAAC,AAAC,CACA,MAAM,CAAE,CAAC,CACT,OAAO,CAAE,CAAC,CACX",
+    "sources": [
+        "../sass/style.scss",
+        "../sass/components/_Player.scss",
+        "../sass/components/_Control_buttons.scss"
+    ],
+    "names": [],
+    "file": "style.css"
+}
