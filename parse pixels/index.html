@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <canvas
+      id="canvas"
+      width="1000"
+      height="1000"
+      style="border: 2px solid black"
+    ></canvas>
+    <script>
+      let canvas = document.getElementById("canvas");
+      let context = canvas.getContext("2d");
+      let image = new Image();
+      image.src = "./img/poster1.jpg";
+      image.onload = (e) => {
+        canvas.width = image.width * 2;
+        canvas.height = image.height;
+        context.drawImage(image, 0, 0);
+        let imageData = context.getImageData(0, 0, image.width, image.height);
+
+        let r = imageData.data[0];
+        let g = imageData.data[1];
+        let b = imageData.data[2];
+        let a = imageData.data[3];
+
+        for (let i = 0; i < imageData.data.length; i += 4) {
+          let r = imageData.data[i];
+          let g = imageData.data[i + 1];
+          let b = imageData.data[i + 2];
+          let grey = Math.floor((r + g + b) / 3);
+          imageData.data[i] = grey;
+          imageData.data[i + 1] = grey;
+          imageData.data[i + 2] = grey;
+        }
+        context.putImageData(imageData, image.width, 0);
+      };
+    </script>
+  </body>
+</html>
