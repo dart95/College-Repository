@@ -1,0 +1,42 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: aqua;
+  overflow-y: hidden;
+}
+.action-button {
+  width: 64px;
+  height: 32px;
+  border-radius: 0;
+  border: none;
+  background-color: white;
+  user-select: none;
+  margin-right: 2px;
+  transition-property: background-color, color;
+  transition-duration: 0.1s;
+}
+.action-button:hover {
+  background-color: tomato;
+  color: white;
+}
+.active-button:active {
+  background-color: #000;
+}
+#canvas {
+  background-color: white;
+  border-bottom: 2px solid aqua;
+  display: block;
+}
+#controls {
+  background-color: transparent;
+  height: 32px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+#controls *:last-child {
+  margin: 0;
+}
