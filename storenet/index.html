@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <header id="header">
+      <div class="just">
+        <img src="./img/sale.png" alt="" class="header-img" />
+        <span class="header-span">Black Friday</span>
+        <img src="./img/mastercard.png" alt="" class="header-img" />
+      </div>
+    </header>
+    <div id="left-bar"></div>
+    <br />
+
+    <div id="btnContainer">
+      <button class="btn">List</button>
+    </div>
+    <div class="container">
+      <div class="elem">Первый товар</div>
+      <div class="elem">Второй товар</div>
+      <div class="elem">Третий товар</div>
+      <div class="elem">Четвёртый товар</div>
+      <div class="elem">Пятый товар</div>
+      <div class="elem">Шестой товар</div>
+      <div class="elem">Седьмой товар</div>
+      <div class="elem">Восьмой товар</div>
+      <div class="elem">Девятый товар</div>
+      <div class="elem">Десятый товар</div>
+      <div class="elem">Одинадцатый товар</div>
+      <div class="elem">Двенадцатый товар</div>
+    </div>
+
+    <footer id="footer"></footer>
+    <script>
+      let login = document.getElementsByClassName("login")[0];
+      let elements = document.getElementsByClassName("elem");
+      let btn = document.getElementsByClassName("btn")[0];
+
+      function listView() {
+        for (i = 0; i < elements.length; i++) {
+          if (elements[i].style.width === "250px") {
+            btn.innerHTML = "grid";
+            elements[i].style.width = "100%";
+          } else {
+            btn.innerHTML = "list";
+            elements[i].style.width = "250px";
+          }
+        }
+      }
+      btn.addEventListener("click", listView);
+      listView();
+    </script>
+  </body>
+</html>

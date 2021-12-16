@@ -1,0 +1,13 @@
+@import "./components/header";
+@import "./components/left-bar";
+@import "./components/_container";
+@import "./components/_footer";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  overflow: hidden;
+}

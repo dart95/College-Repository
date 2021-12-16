@@ -52,6 +52,11 @@
         <option value="cyan">берёза</option>
         <option value="green">зелёный</option>
       </select>
+      <select class="selector" id="selectP">
+        <option selected value="left">Слево</option>
+        <option value="center">Центр</option>
+        <option value="right">Справа</option>
+      </select>
     </header>
 
     <div id="maintext" contenteditable="true"></div>
@@ -65,6 +70,8 @@
         maintext.style.fontSize = size;
         let color = document.getElementById("selectColor").value;
         maintext.style.color = color;
+        let position = document.getElementById("selectP").value;
+        maintext.style.textAlign = position;
         Array.from(document.getElementsByTagName("span")).forEach(function (
           item
         ) {

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <style type="text/css">
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: cyan;
+        overflow-y: hidden;
+      }
+
+      .action-button {
+        width: 64px;
+        height: 32px;
+        border-radius: 0;
+        border: none;
+        background-color: #fff;
+        user-select: none;
+        margin-right: 2px;
+        transition-property: background-color, color;
+        transition-duration: 0.1s;
+      }
+
+      .action-button:hover {
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #fff;
+      }
+
+      .action-button:active {
+        background-color: #000;
+      }
+
+      #canvas {
+        background-color: #fff;
+        border-bottom: 2px solid #abc;
+        display: block;
+      }
+
+      #controls {
+        background-color: transparent;
+        height: 32px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+      }
+
+      #controls:last-child {
+        margin-right: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main">
+      <canvas id="canvas"></canvas>
+      <div id="controls">
+        <button id="pre-action" class="action-button">UNDO</button>
+        <button id="clear-canvas" class="action-button">CLEAR</button>
+      </div>
+    </div>
+    <script>
+      // Variables and constants
+      let main = document.getElementById("main");
+      let canvas = document.getElementById("canvas");
+      let controls = document.getElementById("controls");
+      let context = canvas.getContext("2d");
+      let mousePosition = { x: 0, y: 0 };
+      let painting = false;
+      let actionBufferValue = 0;
+      const actionBuffer = [];
+      // Function for add last action in buffer
+      const addactionInBuffer = () => {
+        return actionBuffer.push(
+          context.getImageData(0, 0, canvas.width, canvas.height)
+        );
+      };
+      //Call pre function
+      addactionInBuffer();
+      //Function for clear canvas field
+      const clearCanvas = () => {
+        actionBuffer.push(
+          context.getImageData(0, 0, canvas.width, canvas.height)
+        );
+        context.putImageData(actionBuffer[0], 0, 0);
+        actionBufferValue += 1;
+      };
+      // Functions for using adaptive desgin
+      const adaptiveDesign = () => {
+        if (window.innerWidth < 1280) {
+          document.body.style.width = "1280";
+        } else {
+          document.body.style.width = `${window.innerWidth}px`;
+        }
+        document.body.style.height = `${window.innerHeight}px`;
+        main.style.width = `${Math.floor(
+          parseInt(document.body.style.width) * 0.8
+        )}px`;
+        main.style.height = `${Math.floor(
+          parseInt(document.body.style.height) * 0.8
+        )}px`;
+        main.style.marginLeft = `${Math.floor(
+          parseInt(document.body.style.width) * 0.1
+        )}px`;
+        main.style.marginTop = `${Math.floor(
+          parseInt(document.body.style.height) * 0.1
+        )}px`;
+        canvas.width = parseInt(main.style.width);
+        canvas.height = parseInt(main.style.height) - 32;
+      };
+      // Call pre function
+      adaptiveDesign();
+      //function for undo last action
+      const undoAction = () => {
+        actionBufferValue =
+          actionBufferValue === 0
+            ? actionBufferValue
+            : (actionBufferValue -= 1);
+        context.putImageData(actionBuffer[actionBufferValue], 0, 0);
+        if (actionBuffer.length != 1) {
+          actionBuffer.pop();
+        }
+      };
+      //listeners
+      canvas.addEventListener(
+        "mousedown",
+        function (e) {
+          mousePosition.x = e.pageX - this.offsetLeft;
+          mousePosition.y = e.pageY - this.offsetTop;
+          painting = true;
+          context.beginPath();
+          context.moveTo(mousePosition.x, mousePosition.y);
+        },
+        false
+      );
+
+      canvas.addEventListener(
+        "mousemove",
+        function (e) {
+          if (painting) {
+            mousePosition.x = e.pageX - this.offsetLeft;
+            mousePosition.y = e.pageY - this.offsetTop;
+            context.lineTo(mousePosition.x, mousePosition.y);
+            context.stroke();
+          }
+        },
+        false
+      );
+      canvas.addEventListener(
+        "mouseup",
+        function (e) {
+          if (
+            mousePosition.x === e.pageX - this.offsetLeft &&
+            mousePosition.y === e.pageY - this.offsetTop
+          ) {
+            mousePosition.x = e.pageX - this.offsetLeft - 1;
+            mousePosition.y = e.pageY - this.offsetTop - 1;
+          } else {
+            mousePosition.x = e.pageX - this.offsetLeft;
+            mousePosition.y = e.pageY - this.offsetTop;
+          }
+          context.lineTo(mousePosition.x, mousePosition.y);
+          context.stroke();
+          context.closePath();
+          painting = false;
+          addactionInBuffer();
+          actionBufferValue += 1;
+        },
+        false
+      );
+      document.addEventListener(
+        "keydown",
+        function (e) {
+          if (e.ctrlKey & (e.key === "z")) undoAction();
+        },
+        false
+      );
+      document
+        .getElementById("pre-action")
+        .addEventListener("click", undoAction(), false);
+      document
+        .getElementById("clear-canvas")
+        .addEventListener("click", clearCanvas(), false);
+    </script>
+  </body>
+</html>
