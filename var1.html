@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Consolas";
+        font-size: 16px;
+      }
+      canvas {
+        background-color: aqua;
+        display: block;
+        margin-bottom: 10px;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .controls {
+        text-align: center;
+        width: 32px;
+      }
+      .controls:focus {
+        border: 1px solid cyan;
+        background-color: darkcyan;
+        outline: none;
+        padding: 0px 0px 0px 8px;
+      }
+      #grap-drawing-button {
+        width: 64px;
+        height: 24px;
+      }
+      #grap-drawing-button:focus {
+        border: 1px solid cyan;
+        background-color: darkcyan;
+        outline: none;
+      }
+    </style>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="main">
+      <canvas class="canvas"></canvas>
+
+      <div class="tools">
+        <span>f(x)</span>
+        <input type="number" class="controls" placeholder="k" value="1" />
+        <span>* x <sup>2</sup> + </span>
+        <input type="number" class="controls" placeholder="b" value="0" />
+        <input type="button" id="grap-drawing-button" value="draw!" class="" />
+      </div>
+    </div>
+    <script>
+      let canvas = document.getElementsByClassName("canvas");
+      let context = canvas.getContext("2d");
+      const adaptive = () => {
+        document.body.style.height = `${window.innerHeight}px`;
+        canvas.height =
+          Math.floor(window.innerHeight * 0.9 - 40) % 6 > 0
+            ? Math.floor(window.innerHeight * 0.9 - 40) -
+              (Math.floor(window.innerHeight * 0.9 - 40) % 6)
+            : Math.floor(window.innerWidth * 0.9);
+
+        canvas.width = (canvas.height / 6) * 10;
+        // Math.floor((canvas.height / 16) * 9) % 2 > 0
+        //   ? Math.floor((canvas.height / 16) * 9) -
+        //     (Math.floor((canvas.height / 16) * 9) % 2)
+        //   : Math.floor((canvas.height / 16) * 9);
+        console.log(`${canvas.height}:${canvas.width}`);
+      };
+      adaptive();
+      const axesDrawing = () => {
+        context.strokestyle = "#000";
+        context.lineWidth = 2;
+        context.beginPath();
+        context.moveTo(0, canvas.height / 2);
+        context.lineTo(canvas.width, canvas.height / 2);
+        context.closePath();
+        context.stroke();
+        let xStep = canvas.width / 10;
+        for (let i = 0; i < 12; i += 1) {
+          context.beginPath();
+          context.moveTo(i * xStep - 1, canvas.height / 2 - 3);
+          context.lineTo(i * xStep - 1, canvas.height / 2 + 3);
+          context.closePath();
+          context.stroke();
+        }
+      };
+      axesDrawing();
+      const graphDrawing = () => {
+        let kIndex = Number(
+          document.getElementsByClassName("controls")[0].value
+        );
+        const bIndex = Number(
+          document.getElementsByClassName("controls")[1].value
+        );
+        const graphPoints = [];
+        s;
+        kIndex = kIndex == 0 ? 1 : kIndex;
+        for (let i = 0; i <= canvas.width; i += 1) {
+          const y = kIndex + Math.pow(i - canvas.width, 2) + bIndex;
+          y -= canvas.height / 2;
+          if (y >= 0 && y <= canvas.height) {
+            graphPoints.push([i, y]);
+          }
+        }
+        context.beginPath();
+        context.moveTo();
+        console.log(kIndex);
+      };
+      graphDrawingButton.addEventListener("click", graphDrawing, false);
+    </script>
+  </body>
+</html>
