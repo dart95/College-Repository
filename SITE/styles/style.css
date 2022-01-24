@@ -1,0 +1,211 @@
+﻿body {
+    display: flex;
+    box-sizing: border-box;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    background-color: #f3f3f3;
+}
+
+    body * {
+        box-sizing: border-box;
+    }
+
+.marged-body {
+    width: 1280px;
+    display: inline-flex;
+    box-shadow: 0 25.6px 57.6px 0 rgb(0 0 0 / 22%), 0 4.8px 14.4px 0 rgb(0 0 0 / 18%);
+    background-color: #fff;
+    flex-direction: column;
+    top: 0;
+    bottom: 0;
+    position: relative;
+}
+
+header {
+    height: 100px;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    user-select: none;
+    position: sticky;
+    background-color: #f3f3f3;
+    box-sizing: border-box;
+}
+
+.logo {
+    background-image: url('../img/logo.png');
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 85px;
+    height: 85px;
+    padding-left: 100px;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.logo-name {
+    white-space: nowrap;
+    display: inline-flex;
+    font-size: 32px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #444;
+}
+
+.logo-description {
+    white-space: nowrap;
+    display: inline-flex;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #808080;
+}
+
+.logon {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.logon-avatar {
+    display: inline-flex;
+    border-radius: 100%;
+    width: 35px;
+    height: 35px;
+    background-color: #ffcf00;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 24px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-right: 10px;
+}
+
+.logon-user {
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.logon-name {
+    display: inline-block;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #000;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.logon-type {
+    display: inline-flex;
+    font-weight: bold;
+    font-size: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #808080;
+}
+
+.work-place {
+    overflow-y: auto;
+}
+
+.content {
+    display: inline-flex;
+    width: 100%;
+    padding: 25px;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.list-of-works {
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.work {
+    width: 250px;
+    display: inline-flex;
+    margin: 20px;
+    box-shadow: 0 1.6px 3.6px 0 rgb(0 0 0 / 13%), 0 0.3px 0.9px 0 rgb(0 0 0 / 11%);
+    padding: 10px;
+    cursor: pointer;
+    flex-direction: column;
+    position: relative;
+}
+
+.author {
+    display: inline-flex;
+    flex-direction: row;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 10px;
+}
+
+    .author > .author-name:hover {
+        text-decoration: underline;
+    }
+
+.author-avatar {
+    display: inline-flex;
+    width: 25px;
+    height: 25px;
+    background-color: #ffcf00;
+    border-radius: 100%;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    margin-right: 10px;
+    flex: none;
+}
+
+.author-name {
+    display: inline-block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    align-items: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    line-height: 25px;
+}
+
+.image {
+    display: inline-flex;
+    margin-bottom: 10px;
+}
+
+.info {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    color: #444;
+}
+
+footer {
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    padding: 10px;
+    user-select: none;
+    background-color: #f3f3f3;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    color: #444;
+    position: static;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}

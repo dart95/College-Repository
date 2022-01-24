@@ -1,0 +1,23 @@
+.tooltips {
+    margin-bottom: 10px;
+    background-color: #fff;
+    padding: 10px;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    box-shadow: 0 6.4px 14.4px 0 rgb(0 0 0 / 13%), 0 1.2px 3.6px 0 rgb(0 0 0 / 11%);
+}
+
+    .tooltips > label {
+        margin-right: 5px;
+    }
+
+    .tooltips > *:not(label) {
+        display: inline-flex;
+        margin-right: 25px;
+    }
+
+canvas {
+    border: 1px solid gray;
+    background-color: #fff;
+}
