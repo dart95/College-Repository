@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      * {
+        display: border-box;
+        align-items: center;
+        justify-content: center;
+      }
+      .canvas {
+        width: 320px;
+        height: 480px;
+
+        border: 2px solid black;
+      }
+      .controls {
+        word-spacing: 10px;
+      }
+      #display-result {
+        background-color: cyan;
+      }
+      #canvas-container {
+        float: left;
+      }
+    </style>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="main">
+      <div id="canvas-container">
+        <canvas class="canvas"></canvas>
+      </div>
+      <div class="controls">
+        <p>
+          R
+          <input
+            value="0"
+            type="number"
+            min="0"
+            max="255"
+            class="inp-controls"
+          />
+        </p>
+        <p>
+          G
+          <input
+            value="0"
+            type="number"
+            min="0"
+            max="255"
+            class="inp-controls"
+          />
+        </p>
+        <p>
+          B
+          <input
+            value="0"
+            type="number"
+            min="0"
+            max="255"
+            class="inp-controls"
+          />
+        </p>
+        <button class="btn-controls">Enter</button>
+        <p>Результат:<span id="display-result"></span></p>
+      </div>
+    </div>
+    <script>
+      let canvas = document.getElementsByClassName("canvas")[0];
+      let context = canvas.getContext("2d");
+      const searchingButton =
+        document.getElementsByClassName("btn-controls")[0];
+      let image = new Image();
+      image.src = "poster1.jpg";
+      window.onload = function () {
+        canvas.width = image.width;
+        canvas.height = image.height;
+        context.drawImage(image, 0, 0);
+      };
+      // const adaptive = () => {
+      //   document.getElementById("canvas-container").style.width = `${
+      //     Math.floor(window.innerWidth / 2) - 12
+      //   }px`;
+      //   document.getElementById(
+      //     "canvas-container"
+      //   ).style.height = `${Math.floor(
+      //     parseInt(document.getElementById('canvas-container').style.height)
+      //   )}px`;
+      // };
+      const searchingRGB = () => {
+        let k = 0;
+        let rInputValue =
+          document.getElementsByClassName("inp-controls")[0].value;
+        let gInputValue =
+          document.getElementsByClassName("inp-controls")[1].value;
+
+        let bInputValue =
+          document.getElementsByClassName("inp-controls")[2].value;
+
+        let imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+        for (let i = 0; i < imageData.data.length; i += 4) {
+          let r = imageData.data[i];
+          let g = imageData.data[i];
+          let b = imageData.data[i];
+          if (
+            r + " " + g + " " + b ===
+            rInputValue + " " + gInputValue + " " + bInputValue
+          )
+            k += 1;
+        }
+        return (document.getElementById(
+          "display-result"
+        ).innerText = `Результат:  в изображении есть ${k} пикселей данного цвета =>${rInputValue}, ${gInputValue}, ${bInputValue}`);
+      };
+      searchingButton.addEventListener("click", searchingRGB, false);
+    </script>
+  </body>
+</html>

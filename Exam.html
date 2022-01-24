@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="main">
+      <input type="number" placeholder="Write number" id="inp" />
+      <div class="output"></div>
+      <button class="btn">Расчёт</button>
+    </div>
+
+    <script>
+      let btn = document.getElementsByClassName("btn")[0];
+      let out = document.getElementsByClassName("output")[0];
+      let rommass = ["X", "V", "l"];
+
+      function change() {
+        let num = document.getElementById("inp").value;
+        let change;
+        let sum;
+        let res = [];
+        while (true) {
+          change = num % 10;
+          res.unshift(change);
+          num = (num - change) / 10;
+          if (num === 0) {
+            break;
+          }
+        }
+        for (let i = 0; i < res.length; i++) {
+          console.log(res[i]);
+        }
+      }
+      btn.addEventListener("click", change);
+    </script>
+  </body>
+</html>

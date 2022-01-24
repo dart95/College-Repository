@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      .inp {
+        width: 48px;
+      }
+      .inp:focus {
+        border: 2px solid aqua;
+        outline: none;
+      }
+    </style>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="main">
+      <h1>Решение графика функции <b>F(x) = k1x +b = k2/x</b></h1>
+      <div class="inputs">
+        <span>k1 = <input type="number" class="inp" /></span>
+        <span>b = <input type="number" class="inp" /></span>
+        <span>k2 = <input type="number" class="inp" /> </span>
+        <button class="btn">Решить</button>
+      </div>
+      <div class="result_output"></div>
+      <script>
+        let btn = document.getElementsByClassName("btn")[0];
+        let result = () => {
+          let k1 = document.getElementsByClassName("inp")[0].value;
+          let b = document.getElementsByClassName("inp")[1].value;
+          let k2 = document.getElementsByClassName("inp")[2].value;
+          let d = Math.pow(b, 2) - 4 * k1 * k2;
+          let x1 = ((-b + Math.sqrt(d)) / 2) * k1;
+          let x2 = ((-b - Math.sqrt(d)) / 2) * k1;
+          let out = document.getElementsByClassName("result_output")[0];
+          let y1 = k1 * x1 + b;
+          let y2 = k2 / x2;
+          out.innerHTML = `Результат: x1 = ${x1}, x2 = ${x2}, y1 = ${y1}, y2 = ${y2} `;
+        };
+        btn.addEventListener("click", result, false);
+      </script>
+    </div>
+  </body>
+</html>
