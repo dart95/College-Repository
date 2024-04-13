@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>task7</title>
+  </head>
+  <body>
+    <form>
+      HEX: <input class="input" /><br />
+      DEC: <label class="output"></label>
+    </form>
+
+    <script>
+      let hex = document.querySelector(".hex");
+      let input = document.querySelector(".input");
+      let output = document.querySelector(".output");
+
+      function isHEX(ch) {
+        return (
+          (ch >= "0" && ch <= "9") ||
+          (ch >= "A" && ch <= "F") ||
+          (ch >= "a" && ch <= "f")
+        );
+      }
+      function isValid(str) {
+        for (let i = 0; i < str.length; ++i) {
+          if (!isHEX(str[i])) {
+            return false;
+          }
+        }
+        return true;
+      }
+
+      input.addEventListener("keyup", (event) => {
+        if (input.value.length != 0) {
+          if (isValid(input.value)) {
+            output.textContent = parseInt(input.value, 16);
+          } else {
+            output.innerHTML =
+              "<span style='color: red'>Use only 1-9 and A-F symbols";
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

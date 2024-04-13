@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const data = [
+        {
+          id: 1,
+          name: "Mario",
+          age: 45,
+          isActive: true,
+          email: "Mar@gmail.com",
+        },
+        {
+          id: 2,
+          name: "Jario",
+          age: 42,
+          isActive: false,
+          email: "Jar@gmail.com",
+        },
+        {
+          id: 3,
+          name: "Sario",
+          age: 1,
+          isActive: true,
+          email: "sar@gmail.com",
+        },
+        {
+          id: 4,
+          name: "Mara",
+          age: 90,
+          isActive: true,
+          email: "Mara@gmail.com",
+        },
+
+        {
+          id: 5,
+          name: "Gario",
+          age: 43,
+          isActive: false,
+          email: "Gar@gmail.com",
+        },
+      ];
+      //const array = [1, 54, 4535, 45, 455, 431, 1, 23, 3, 4, 5, 67, 545, 32432];
+      //const newArray = [];
+
+      /*array.forEach((elem, i) => {
+        return newArray.push((elem += elem - 1));
+      });
+      console.log(newArray);*/
+      const getEmail = [];
+      data.forEach((elem) => {
+        getEmail.push(elem.age, elem.name);
+      });
+      console.log(getEmail);
+    </script>
+  </body>
+</html>

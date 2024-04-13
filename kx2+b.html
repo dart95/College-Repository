@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        align-items: center;
+        background-color: #abc;
+        display: flex;
+        justify-content: center;
+      }
+      canvas {
+        background-color: #fff;
+        /* height: 698px;
+        width: 698px; */
+        display: block;
+      }
+    </style>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <canvas id="canvas" height="698" width="698"></canvas>
+    <script>
+      let canvas = document.getElementById("canvas");
+      let context = canvas.getContext("2d");
+      const adaptiveResizingFunction = () => {
+        document.body.style.width = `${window.innerWidth}px`;
+        document.body.style.height = `${window.innerHeight}px`;
+        canvas.width = Math.round(canvas.width / 100) * 100;
+        canvas.height = canvas.width;
+        console.log(`${canvas.width}:${canvas.height}`);
+      };
+      adaptiveResizingFunction();
+
+      const axesDrawingFunction = () => {
+        context.lineWidth = 2;
+        context.strokeStyle = "#aaa";
+        const multiplier = canvas.width / 20;
+        for (let i = 0; i < 21; i += 1) {
+          context.beginPath();
+          context.moveTo(i * multiplier - 1, 0);
+          context.lineTo(i * multiplier - 1, canvas.height);
+          context.stroke();
+          context.closePath();
+        }
+        for (let j = 0; j < 21; j += 1) {
+          context.beginPath();
+          context.moveTo(0, j * multiplier);
+          context.lineTo(canvas.width, j * multiplier);
+          context.stroke();
+          context.closePath();
+        }
+        context.strokeStyle = "#000";
+        context.beginPath();
+        context.moveTo(canvas.width / 2, 0);
+        context.lineTo(canvas.width / 2, canvas.height);
+        context.stroke();
+        context.closePath();
+        context.beginPath();
+        context.moveTo(0, canvas.height / 2);
+        context.lineTo(canvas.width, canvas.height / 2);
+        context.stroke();
+        context.closePath();
+        return false;
+      };
+
+      axesDrawingFunction();
+
+      const graphDrawingFunction = () => {
+        const r = 4;
+        const b = 0;
+        const multiplier = canvas.width / 20;
+        context.strokeStyle = "#00e";
+        for (let x = -10; x < 11; x += 1) {
+          const y1 = 10 * Math.pow(x, 2);
+          const y2 = 10 * Math.pow(x + 1, 2);
+          context.beginPath();
+          context.moveTo(
+            x * multiplier + canvas.width / 2,
+            canvas.height - (y1 + canvas.height / 2)
+          );
+          context.lineTo(
+            (x + 1) * multiplier + canvas.width / 2,
+            canvas.height - (y2 + canvas.height / 2)
+          );
+          context.stroke();
+          context.closePath();
+        }
+        return false;
+      };
+      graphDrawingFunction();
+    </script>
+  </body>
+</html>

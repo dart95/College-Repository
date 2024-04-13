@@ -1,0 +1,75 @@
+
+/*Заливка фона*/
+body{
+  background: url("./img/Mirrors3.png") no-repeat center center fixed;
+ 
+  color:#fff;
+}
+header{
+display: flex;
+
+}
+
+/*Правила для логотипа*/
+.Logo{
+  display: inline-block;
+  
+  vertical-align: middle;
+  margin-right: 45px;
+}
+.Logo img{
+  width: 150px;
+  height: 150px;
+}
+
+/* Правила для Top_menu*/
+.Top_menu{
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 25px;
+}
+
+
+/* Правило для Header menu*/
+.Top_menu li{
+  margin-right: 25px;
+  display: inline-block;
+  vertical-align: middle ;
+  color: #1e1a44;
+}
+
+.Top_menu a{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  color: #1e1a44;
+  text-decoration: none;
+  vertical-align: middle ;
+}
+.Top_menu a:hover{
+  color: rgb(4, 26, 136);
+}
+
+
+/*расположение контейнера по центру*/
+.container
+{
+  
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid black;
+
+  
+  
+}
+
+/*Стиль для Контейнера*/
+.container 
+{
+  
+  background: linear-gradient(-240deg, #1e1a44 2%, #251f53 );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #1e1a44;
+  font-family:  Arial, Helvetica, sans-serif;
+}
